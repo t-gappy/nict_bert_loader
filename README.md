@@ -1,10 +1,10 @@
 # NICT BERT LOADER
 Loading [NICT BERT](https://alaginrc.nict.go.jp/nict-bert/index.html) in Huggingface Transformers style. <br><br>
-<b>[NOTE] this loader overwrite member-variable of BertJapaneseTokenizer class (BertJapaneseTokenizer.word_tokenizer).</b><br>
-<b>You should use this loader only for experiments. (NO MODEL DISTRIBUTION PURPOSE)</b><br><br>
-<b>[注意] 本リポジトリのローダーはBertJapaneseTokenizerのword_tokenizerというメンバ変数を上書きしてしまいます。</b>
-<b>使用に際しては他モデル比較実験でのコード簡略化等を目的とした使用を推奨します。</b>
-<b>学習済みモデルの配布等をする場合、モデル利用者もまたこのローダーを利用する必要が出てしまいます。</b>
+<b>[NOTE]</b> this loader overwrite member-variable of BertJapaneseTokenizer class (BertJapaneseTokenizer.word_tokenizer).
+<b>You should use this loader only for personal use like experiments. (NO MODEL DISTRIBUTION PURPOSE)</b><br><br>
+<b>[注意]</b> 本リポジトリのローダーはBertJapaneseTokenizerのword_tokenizerというメンバ変数を上書きしてしまいます。
+<b>使用に際しては実験でのコード簡略化等を目的とした個人的な利用を推奨します。
+学習済みモデルの配布をした場合、モデル利用者もまたこのローダーを利用する必要があります。</b>
 
 ## requirements / dev-env
 - cui
