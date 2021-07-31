@@ -5,6 +5,11 @@ import unicodedata
 from typing import Optional
 
 class JumanTokenizer:
+    """almost copy-and-paste from MecabTokenizer in 
+    https://huggingface.co/transformers/_modules/transformers/models/bert_japanese/tokenization_bert_japanese.html
+
+    insted of using fugashi, JumanTokenzier use MeCab.
+    """
 
     def __init__(
         self,
