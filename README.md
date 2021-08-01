@@ -1,5 +1,6 @@
 # NICT BERT LOADER
-Loading [NICT BERT](https://alaginrc.nict.go.jp/nict-bert/index.html) in Huggingface Transformers style. <br><br>
+Loading [NICT BERT](https://alaginrc.nict.go.jp/nict-bert/index.html) in Huggingface Transformers style. <br>
+You can use tokenizer without pre-tokenizing by mecab. <br><br>
 <b>[NOTE]</b> this loader overwrite member-variable of BertJapaneseTokenizer class (BertJapaneseTokenizer.word_tokenizer).
 <b>You should use this loader only for personal use like experiments. (NO MODEL DISTRIBUTION PURPOSE)</b><br><br>
 <b>[注意]</b> 本リポジトリのローダーはBertJapaneseTokenizerのword_tokenizerというメンバ変数を上書きしてしまいます。
@@ -7,7 +8,7 @@ Loading [NICT BERT](https://alaginrc.nict.go.jp/nict-bert/index.html) in Hugging
 学習済みモデルの配布をした場合、モデル利用者もまたこのローダーを利用する必要があります。</b>
 
 ## requirements / dev-env
-- cui
+- commandline
     - wget
     - mecab
     - mecab-jumandic (see instruction below)
@@ -33,12 +34,25 @@ cd /path/to/this/repo
 cp -r ./nict_bert_loader /path/to/working/directory/
 ```
 
-- 2) import `load_nict_bert` function.
+- 2) import `load_nict_bert` function, and use.
 
 ```python
 from nict_bert_loader import load_nict_bert
 
 tokenizer, model = load_nict_bert("32K_BPE")
+
+texts = [
+    "NICT版のBERTを事前形態素分割無しで利用することができます。",
+    "呼び出し部分だけはif文で処理する必要がありますが", 
+    "Transformersにある他の日本語版BERTと同じ学習コードで利用できます。",
+    "ただし、学習済みモデル配布目的の場合は注意が必要です。"
+]
+
+tokenized = tokenizer(
+    texts, padding=True, truncation=True, return_tensors="pt"
+)
+
+hs, cls = self.model(**tokenized, return_dict=False)
 ```
 
 ### args of load_nict_bert
